@@ -1,5 +1,7 @@
 # GameVerse
 
+## LINK DE LA APP ALLOTJADA: https://gameverse-frontend.onrender.com/
+
 ## Motiu del projecte
 
 La idea principal era fer una app que motivés a l'usuari a jugar a tennis i entrenar-lo, no obstant, les coses es van complicar en el moment en el que vaig haver de crear les meves pròpies APIs i el resultat del projecte va ser molt pobre, llavors vaig decidir crear-ne un de nou aprofitant la meva passió pels videojocs. Sempre he sigut fanàtic d'una web anomenada 'letterbox' on amants del cinema penjen les seves reviews i opinions sobre les pel.lícules que veuen i les comparteixen amb els demés usuaris de la web, per això he volgut fer algo semblant pero enfocat als videojocs, el resultat és aquest: GameVerse
