@@ -1,0 +1,50 @@
+.platforms-page { padding-bottom: 3rem; }
+
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.platform-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  text-decoration: none;
+}
+
+.platform-icon-big { font-size: 2.25rem; flex-shrink: 0; }
+
+.platform-info { flex: 1; min-width: 0; }
+
+.platform-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.platform-count {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.platform-year {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.platform-arrow {
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.platform-card:hover .platform-arrow { color: var(--accent-light); transform: translateX(4px); }
