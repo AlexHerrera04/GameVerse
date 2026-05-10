@@ -144,13 +144,13 @@ Per crear una review, el backend espera l’identificador del joc, el nom del jo
 
 ## Propostes de millora
 
-Migrar de SQLite a PostgreSQL per tenir una base de dades més robusta.
-Afegir recuperació de contrasenya i verificació de correu electrònic.
-Incorporar rols d’usuari i panell d’administració.
-Afegir més filtres de cerca i recomanacions personalitzades.
-Millorar la gestió d’errors i els missatges de feedback al frontend.
-Afegir proves automàtiques al frontend i al backend.
-Implementar paginació més avançada i càrrega incremental en més seccions.
-Permetre editar el perfil amb avatar personalitzat i més dades públiques.
-Afegir llistes personalitzades més enllà dels favorits.
-Preparar el projecte per a desplegament amb una base de dades persistent i variables d’entorn separades per entorn.
+- Migrar de SQLite a PostgreSQL per tenir una base de dades més robusta.
+- Afegir recuperació de contrasenya i verificació de correu electrònic.
+- Incorporar rols d’usuari i panell d’administració.
+- Afegir més filtres de cerca i recomanacions personalitzades.
+- Millorar la gestió d’errors i els missatges de feedback al frontend.
+- Afegir proves automàtiques al frontend i al backend.
+- Implementar paginació més avançada i càrrega incremental en més seccions.
+- Permetre editar el perfil amb avatar personalitzat i més dades públiques.
+- Afegir llistes personalitzades més enllà dels favorits.
+- Preparar el projecte per a desplegament amb una base de dades persistent i variables d’entorn separades per entorn.
