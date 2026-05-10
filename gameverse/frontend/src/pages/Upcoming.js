@@ -23,14 +23,18 @@ const Upcoming = () => {
     setLoading(false);
   };
 
-  useEffect(() => { load(1); }, []);
+  useEffect(() => {
+    load(1);
+  }, []);
 
   return (
     <div className="upcoming-page">
       <div className="container">
         <div className="page-header">
-          <h1 className="page-title">🚀 Pròximament</h1>
-          <p className="page-subtitle">{total > 0 ? `${total.toLocaleString()} jocs a camí` : 'Els propers llançaments de videojocs'}</p>
+          <h1 className="page-title">Pròximament</h1>
+          <p className="page-subtitle">
+            {total > 0 ? `${total.toLocaleString()} jocs a camí` : 'Els propers llançaments de videojocs'}
+          </p>
         </div>
 
         {loading && page === 1 ? (
@@ -52,7 +56,7 @@ const Upcoming = () => {
             )}
 
             {!hasMore && games.length > 0 && (
-              <p className="end-message">Has vist tots els pròxims llançaments 🎉</p>
+              <p className="end-message">Has vist tots els pròxims llançaments</p>
             )}
           </>
         )}

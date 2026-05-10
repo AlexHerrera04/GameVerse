@@ -21,7 +21,7 @@ initDb().then(() => {
   app.use('/api/*', (req, res) => res.status(404).json({ error: 'Not found' }));
 
   app.listen(PORT, () => {
-    console.log(`🎮 GameVerse backend running on http://localhost:${PORT}`);
+    console.log(`GameVerse backend running on http://localhost:${PORT}`);
   });
 }).catch(err => {
   console.error('Failed to initialize database:', err);

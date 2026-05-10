@@ -33,13 +33,25 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile/:username" element={<Profile />} />
-            <Route path="*" element={
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', gap: '1rem' }}>
-                <div style={{ fontSize: '4rem' }}>🎮</div>
-                <h1>404 - Pàgina no trobada</h1>
-                <a href="/" className="btn btn-primary">Tornar a l'inici</a>
-              </div>
-            } />
+            <Route
+              path="*"
+              element={
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '60vh',
+                    gap: '1rem'
+                  }}
+                >
+                  <div style={{ fontSize: '4rem' }}>404</div>
+                  <h1>404 - Pàgina no trobada</h1>
+                  <a href="/" className="btn btn-primary">Tornar a l'inici</a>
+                </div>
+              }
+            />
           </Routes>
         </ToastProvider>
       </FavoritesProvider>

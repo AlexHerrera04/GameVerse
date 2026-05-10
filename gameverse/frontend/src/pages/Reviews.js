@@ -23,21 +23,25 @@ const Reviews = () => {
     setLoading(false);
   };
 
-  useEffect(() => { load(1); }, []);
+  useEffect(() => {
+    load(1);
+  }, []);
 
   return (
     <div className="reviews-page">
       <div className="container">
         <div className="page-header">
-          <h1 className="page-title">⭐ Reviews de la comunitat</h1>
-          <p className="page-subtitle">{total > 0 ? `${total} reviews publicades` : 'Opinions dels gamers sobre videojocs'}</p>
+          <h1 className="page-title">Reviews de la comunitat</h1>
+          <p className="page-subtitle">
+            {total > 0 ? `${total} reviews publicades` : 'Opinions dels gamers sobre videojocs'}
+          </p>
         </div>
 
         {loading ? (
           <div className="loading-container"><div className="spinner" /></div>
         ) : reviews.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-state-icon">💬</div>
+            <div className="empty-state-icon">REV</div>
             <h3>Encara no hi ha reviews</h3>
             <p>Cerca un joc i escriu la primera review!</p>
           </div>
@@ -58,7 +62,13 @@ const Reviews = () => {
               <div className="pagination">
                 <button className="page-btn" disabled={page === 1} onClick={() => load(page - 1)}>←</button>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-                  <button key={p} className={`page-btn ${p === page ? 'active' : ''}`} onClick={() => load(p)}>{p}</button>
+                  <button
+                    key={p}
+                    className={`page-btn ${p === page ? 'active' : ''}`}
+                    onClick={() => load(p)}
+                  >
+                    {p}
+                  </button>
                 ))}
                 <button className="page-btn" disabled={page === totalPages} onClick={() => load(page + 1)}>→</button>
               </div>

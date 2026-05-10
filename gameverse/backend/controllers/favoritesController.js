@@ -29,7 +29,7 @@ const removeFavorite = (req, res) => {
 
 const rateGame = (req, res) => {
   const { rating } = req.body;
-  if (!rating || rating < 1 || rating > 10) return res.status(400).json({ error: 'Rating must be 1-10' });
+  if (!rating || rating < 1 || rating > 5) return res.status(400).json({ error: 'Rating must be 1-5' });
   const existing = get('SELECT id FROM favorites WHERE user_id = ? AND game_id = ?', [req.user.id, req.params.gameId]);
   if (!existing) return res.status(404).json({ error: 'Not in favorites' });
   run('UPDATE favorites SET user_rating = ? WHERE user_id = ? AND game_id = ?', [rating, req.user.id, req.params.gameId]);

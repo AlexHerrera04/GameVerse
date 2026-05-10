@@ -15,7 +15,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    if (password.length < 6) { setError('La contrasenya ha de tenir com a mínim 6 caràcters'); return; }
+    if (password.length < 6) {
+      setError('La contrasenya ha de tenir com a mínim 6 caràcters');
+      return;
+    }
     setLoading(true);
     try {
       await register(username, email, password);
@@ -31,7 +34,7 @@ const Register = () => {
     <div className="auth-page">
       <div className="auth-card card">
         <div className="auth-header">
-          <div className="auth-logo">🎮</div>
+          <div className="auth-logo">GameVerse</div>
           <h1 className="auth-title">Uneix-te a GameVerse</h1>
           <p className="auth-subtitle">Crea el teu compte gratuïtament</p>
         </div>
@@ -52,6 +55,7 @@ const Register = () => {
               minLength={3}
             />
           </div>
+
           <div className="form-group">
             <label className="form-label">Email</label>
             <input
@@ -63,6 +67,7 @@ const Register = () => {
               required
             />
           </div>
+
           <div className="form-group">
             <label className="form-label">Contrasenya</label>
             <input
@@ -75,6 +80,7 @@ const Register = () => {
               minLength={6}
             />
           </div>
+
           <button type="submit" className="btn btn-primary auth-submit-btn" disabled={loading}>
             {loading ? 'Creant compte...' : 'Crear compte'}
           </button>

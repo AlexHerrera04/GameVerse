@@ -2,11 +2,11 @@
 
 .hero {
   position: relative;
-  min-height: 580px;
+  min-height: calc(100vh - 88px);
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 4rem 0;
+  padding: 6rem 0 5.5rem;
 }
 
 .hero-bg {
@@ -25,6 +25,7 @@
   align-items: center;
   text-align: center;
   gap: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .hero-badge {
@@ -70,7 +71,7 @@
 .hero-stats {
   display: flex;
   gap: 3rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .hero-stat {
@@ -89,35 +90,20 @@
   background-clip: text;
 }
 
-.stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
-.features-section {
+.section {
   padding: 3rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-secondary);
 }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+.section:first-of-type {
+  padding-top: 1rem;
 }
-
-.feature-card {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.feature-icon { font-size: 2rem; }
-.feature-title { font-size: 1rem; font-weight: 700; }
-.feature-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
-
-.section { padding: 3rem 0; }
 
 .section-header {
   display: flex;
@@ -138,7 +124,20 @@
 .section-link:hover { color: var(--accent); }
 
 @media (max-width: 600px) {
-  .hero { min-height: 480px; padding: 3rem 0; }
-  .hero-stats { gap: 2rem; }
-  .stat-num { font-size: 1.4rem; }
+  .hero {
+    min-height: calc(100vh - 76px);
+    padding: 4.5rem 0 4rem;
+  }
+
+  .hero-content {
+    margin-top: 0.75rem;
+  }
+
+  .hero-stats {
+    gap: 2rem;
+  }
+
+  .stat-num {
+    font-size: 1.4rem;
+  }
 }

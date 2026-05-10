@@ -64,7 +64,9 @@ const Search = () => {
     setLoading(false);
   }, [query, selectedPlatform, selectedGenre, ordering, setSearchParams]);
 
-  useEffect(() => { search(1); }, [ordering, selectedPlatform, selectedGenre]);
+  useEffect(() => {
+    search(1);
+  }, [ordering, selectedPlatform, selectedGenre]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,20 +80,44 @@ const Search = () => {
 
   const renderPagination = () => {
     if (totalPages <= 1) return null;
+
     const pages = [];
     const start = Math.max(1, page - 2);
     const end = Math.min(totalPages, page + 2);
-    if (start > 1) { pages.push(1); if (start > 2) pages.push('...'); }
+
+    if (start > 1) {
+      pages.push(1);
+      if (start > 2) pages.push('...');
+    }
+
     for (let i = start; i <= end; i++) pages.push(i);
-    if (end < totalPages) { if (end < totalPages - 1) pages.push('...'); pages.push(totalPages); }
+
+    if (end < totalPages) {
+      if (end < totalPages - 1) pages.push('...');
+      pages.push(totalPages);
+    }
+
     return (
       <div className="pagination">
-        <button className="page-btn" disabled={page === 1} onClick={() => handlePageChange(page - 1)}>←</button>
+        <button className="page-btn" disabled={page === 1} onClick={() => handlePageChange(page - 1)}>
+          ←
+        </button>
         {pages.map((p, i) =>
-          p === '...' ? <span key={`el${i}`} className="page-ellipsis">…</span> :
-          <button key={p} className={`page-btn ${p === page ? 'active' : ''}`} onClick={() => handlePageChange(p)}>{p}</button>
+          p === '...' ? (
+            <span key={`el${i}`} className="page-ellipsis">…</span>
+          ) : (
+            <button
+              key={p}
+              className={`page-btn ${p === page ? 'active' : ''}`}
+              onClick={() => handlePageChange(p)}
+            >
+              {p}
+            </button>
+          )
         )}
-        <button className="page-btn" disabled={page === totalPages} onClick={() => handlePageChange(page + 1)}>→</button>
+        <button className="page-btn" disabled={page === totalPages} onClick={() => handlePageChange(page + 1)}>
+          →
+        </button>
       </div>
     );
   };
@@ -100,8 +126,10 @@ const Search = () => {
     <div className="search-page">
       <div className="container">
         <div className="page-header">
-          <h1 className="page-title">🔍 Cercador de jocs</h1>
-          <p className="page-subtitle">{total > 0 ? `${total.toLocaleString()} jocs trobats` : 'Cerca qualsevol videojoc'}</p>
+          <h1 className="page-title">Cercador de jocs</h1>
+          <p className="page-subtitle">
+            {total > 0 ? `${total.toLocaleString()} jocs trobats` : 'Cerca qualsevol videojoc'}
+          </p>
         </div>
 
         <form className="search-form" onSubmit={handleSubmit}>
@@ -114,31 +142,48 @@ const Search = () => {
               value={query}
               onChange={e => setQuery(e.target.value)}
             />
-            <button type="submit" className="btn btn-primary search-btn">Cercar</button>
+            <button type="submit" className="btn btn-primary search-btn">
+              Cercar
+            </button>
           </div>
 
           <div className="search-filters">
-            <select className="form-select" value={selectedPlatform} onChange={e => setSelectedPlatform(e.target.value)}>
+            <select
+              className="form-select"
+              value={selectedPlatform}
+              onChange={e => setSelectedPlatform(e.target.value)}
+            >
               <option value="">Totes les plataformes</option>
               {platforms.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
             </select>
 
-            <select className="form-select" value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
+            <select
+              className="form-select"
+              value={selectedGenre}
+              onChange={e => setSelectedGenre(e.target.value)}
+            >
               <option value="">Tots els gèneres</option>
               {genres.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
             </select>
 
-            <select className="form-select" value={ordering} onChange={e => setOrdering(e.target.value)}>
+            <select
+              className="form-select"
+              value={ordering}
+              onChange={e => setOrdering(e.target.value)}
+            >
               {ORDERINGS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
             </select>
           </div>
         </form>
 
         {loading ? (
-          <div className="loading-container"><div className="spinner" /><span>Cercant...</span></div>
+          <div className="loading-container">
+            <div className="spinner" />
+            <span>Cercant...</span>
+          </div>
         ) : games.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-state-icon">🎮</div>
+            <div className="empty-state-icon">JOC</div>
             <h3>Cap joc trobat</h3>
             <p>Prova amb uns altres termes de cerca o filtres.</p>
           </div>

@@ -15,17 +15,16 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { to: '/search', label: '🔍 Cerca' },
-    { to: '/platforms', label: '🖥️ Plataformes' },
-    { to: '/upcoming', label: '🚀 Pròximament' },
-    { to: '/reviews', label: '⭐ Reviews' },
+    { to: '/search', label: 'Cerca' },
+    { to: '/platforms', label: 'Plataformes' },
+    { to: '/upcoming', label: 'Pròximament' },
+    { to: '/reviews', label: 'Reviews' },
   ];
 
   return (
     <nav className="navbar">
       <div className="container navbar-inner">
         <Link to="/" className="navbar-brand" onClick={() => setMenuOpen(false)}>
-          <span className="brand-icon">🎮</span>
           <span className="brand-text">GameVerse</span>
         </Link>
 
@@ -42,8 +41,12 @@ const Navbar = () => {
           ))}
 
           {user && (
-            <NavLink to="/favorites" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
-              ❤️ Favorits
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Favorits
             </NavLink>
           )}
 
@@ -66,7 +69,9 @@ const Navbar = () => {
         </div>
 
         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-          <span /><span /><span />
+          <span />
+          <span />
+          <span />
         </button>
       </div>
     </nav>

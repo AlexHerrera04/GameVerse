@@ -4,16 +4,24 @@ import { gamesAPI } from '../services/api';
 import './Platforms.css';
 
 const platformIcons = {
-  'PC': '🖥️', 'PlayStation': '🎮', 'Xbox': '🟢', 'Nintendo': '🔴',
-  'iOS': '📱', 'Android': '📱', 'macOS': '🍎', 'Linux': '🐧',
-  'Atari': '👾', 'Sega': '🎯', 'Commodore': '💾',
+  'PC': 'PC',
+  'PlayStation': 'PS',
+  'Xbox': 'XB',
+  'Nintendo': 'NT',
+  'iOS': 'iOS',
+  'Android': 'AND',
+  'macOS': 'MAC',
+  'Linux': 'LNX',
+  'Atari': 'ATR',
+  'Sega': 'SGA',
+  'Commodore': 'CMD',
 };
 
 const getPlatformIcon = (name) => {
   for (const [key, icon] of Object.entries(platformIcons)) {
     if (name.includes(key)) return icon;
   }
-  return '🕹️';
+  return 'PLT';
 };
 
 const Platforms = () => {
@@ -33,7 +41,7 @@ const Platforms = () => {
     <div className="platforms-page">
       <div className="container">
         <div className="page-header">
-          <h1 className="page-title">🖥️ Plataformes</h1>
+          <h1 className="page-title">Plataformes</h1>
           <p className="page-subtitle">Explora jocs per plataforma de joc</p>
         </div>
 

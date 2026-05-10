@@ -29,7 +29,7 @@ const Login = () => {
     <div className="auth-page">
       <div className="auth-card card">
         <div className="auth-header">
-          <div className="auth-logo">🎮</div>
+          <div className="auth-logo">GameVerse</div>
           <h1 className="auth-title">Benvingut de nou</h1>
           <p className="auth-subtitle">Inicia sessió a GameVerse</p>
         </div>
@@ -49,6 +49,7 @@ const Login = () => {
               autoFocus
             />
           </div>
+
           <div className="form-group">
             <label className="form-label">Contrasenya</label>
             <input
@@ -60,6 +61,7 @@ const Login = () => {
               required
             />
           </div>
+
           <button type="submit" className="btn btn-primary auth-submit-btn" disabled={loading}>
             {loading ? 'Iniciant sessió...' : 'Iniciar sessió'}
           </button>

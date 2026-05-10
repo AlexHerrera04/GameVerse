@@ -5,15 +5,21 @@ import { useAuth } from '../context/AuthContext';
 import './GameCard.css';
 
 const platformIcons = {
-  'PC': '🖥️', 'PlayStation': '🎮', 'Xbox': '🟢', 'Nintendo Switch': '🔴',
-  'iOS': '📱', 'Android': '📱', 'macOS': '🍎', 'Linux': '🐧',
+  'PC': 'PC',
+  'PlayStation': 'PS',
+  'Xbox': 'XB',
+  'Nintendo Switch': 'NS',
+  'iOS': 'iOS',
+  'Android': 'AND',
+  'macOS': 'MAC',
+  'Linux': 'LNX',
 };
 
 const getPlatformIcon = (name) => {
   for (const [key, icon] of Object.entries(platformIcons)) {
     if (name.includes(key)) return icon;
   }
-  return '🕹️';
+  return 'PLT';
 };
 
 const GameCard = ({ game }) => {
@@ -40,15 +46,17 @@ const GameCard = ({ game }) => {
         {game.background_image ? (
           <img src={game.background_image} alt={game.name} className="game-card-image" loading="lazy" />
         ) : (
-          <div className="game-card-no-image">🎮</div>
+          <div className="game-card-no-image">Sense imatge</div>
         )}
+
         <button
           className={`fav-btn ${fav ? 'active' : ''}`}
           onClick={handleFav}
           title={fav ? 'Treure de favorits' : 'Afegir a favorits'}
         >
-          {fav ? '❤️' : '🤍'}
+          {fav ? 'OK' : '+'}
         </button>
+
         {game.metacritic && (
           <span className="metacritic-badge">{game.metacritic}</span>
         )}
@@ -62,7 +70,7 @@ const GameCard = ({ game }) => {
             <span className="game-card-date">{game.released.substring(0, 4)}</span>
           )}
           <div className="game-card-rating" style={{ color: ratingColor }}>
-            ⭐ {rating}
+            {rating}
           </div>
         </div>
 

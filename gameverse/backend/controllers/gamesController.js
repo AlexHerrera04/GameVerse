@@ -3,6 +3,13 @@ const axios = require('axios');
 const RAWG_BASE = 'https://api.rawg.io/api';
 const API_KEY = process.env.RAWG_API_KEY;
 
+const normalizeSearchText = (value = '') =>
+  value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+
 const getPlatforms = async (req, res) => {
   try {
     const response = await axios.get(`${RAWG_BASE}/platforms`, {
@@ -22,7 +29,12 @@ const getGames = async (req, res) => {
     } = req.query;
 
     const params = { key: API_KEY, page, page_size };
-    if (search) params.search = search;
+
+    if (search) {
+      params.search = search;
+      params.search_precise = true;
+    }
+
     if (platforms) params.platforms = platforms;
     if (dates) params.dates = dates;
     if (ordering) params.ordering = ordering;
@@ -30,7 +42,23 @@ const getGames = async (req, res) => {
     if (tags) params.tags = tags;
 
     const response = await axios.get(`${RAWG_BASE}/games`, { params });
-    res.json(response.data);
+
+    if (!search) {
+      return res.json(response.data);
+    }
+
+    const normalizedQuery = normalizeSearchText(search);
+    const filteredResults = (response.data.results || []).filter((game) =>
+      normalizeSearchText(game.name).includes(normalizedQuery)
+    );
+
+    res.json({
+      ...response.data,
+      count: filteredResults.length,
+      results: filteredResults,
+      next: null,
+      previous: null
+    });
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch games' });
   }
@@ -44,6 +72,7 @@ const getGameDetail = async (req, res) => {
       axios.get(`${RAWG_BASE}/games/${id}/screenshots`, { params: { key: API_KEY } }),
       axios.get(`${RAWG_BASE}/games/${id}/movies`, { params: { key: API_KEY } }).catch(() => ({ data: { results: [] } }))
     ]);
+
     res.json({
       ...gameRes.data,
       screenshots: screenshotsRes.data.results,
@@ -58,6 +87,7 @@ const getUpcoming = async (req, res) => {
   try {
     const today = new Date().toISOString().split('T')[0];
     const nextYear = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
     const response = await axios.get(`${RAWG_BASE}/games`, {
       params: {
         key: API_KEY,
@@ -67,6 +97,7 @@ const getUpcoming = async (req, res) => {
         page: req.query.page || 1
       }
     });
+
     res.json(response.data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch upcoming games' });
